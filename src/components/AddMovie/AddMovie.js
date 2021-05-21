@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 
 const AddMovie = (props) => {
-  const { className, handleAdd } = props;
+  const { className, addMovie } = props;
   const [newMovie, setNewMovie] = useState({
     id: uuidv4(),
     title: "",
@@ -23,16 +23,16 @@ const AddMovie = (props) => {
     date: "",
     rate: 1,
   });
-  const [modal, setModal] = useState(false);
+  const [show, setShow] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  const toggle = () => setShow(!show);
 
   return (
-    <div style={{marginLeft:'3%'}}>
+    <div style={{ marginLeft: '3%' }}>
       <Button onClick={toggle}>
         Add movie
       </Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
+      <Modal isOpen={show} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>
           Please fill in the information below to add a new movie
         </ModalHeader>
@@ -45,8 +45,8 @@ const AddMovie = (props) => {
                 name="title"
                 required
                 placeholder="Enter a movie's title please "
-                onChange={(e) =>
-                  setNewMovie({ ...newMovie, [e.target.name]: e.target.value })
+                onChange={(evt) =>
+                  setNewMovie({ ...newMovie, [evt.target.name]: evt.target.value })
                 }
               />
               <Label>Description:</Label>
@@ -55,13 +55,13 @@ const AddMovie = (props) => {
                 placeholder="Describe the movie please "
                 required
                 name="description"
-                onChange={(e) =>
-                  setNewMovie({ ...newMovie, [e.target.name]: e.target.value })
+                onChange={(evt) =>
+                  setNewMovie({ ...newMovie, [evt.target.name]: evt.target.value })
                 }
               />
               <Label>Release date:</Label>
               <Input
-                type="text"
+                type="date"
                 placeholder="Enter the Release date"
                 required
                 name="date"
@@ -100,7 +100,7 @@ const AddMovie = (props) => {
           <Button
             color="primary"
             onClick={(e) => {
-              handleAdd(newMovie);
+              addMovie(newMovie);
               toggle();
               setNewMovie({
                 id: uuidv4(),

@@ -1,33 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import moviesData  from "./components/MoviesData";
-import MovieList from "./components/MovieList/MovieList";
-import AddMovie from "./components/AddMovie/AddMovie";
-import Filter from "./components/Filter/Filter";
+import AppRouter from "./components/Router/Router"
 function App() {
-  const [movies, setMovies] = useState(moviesData);
-  const [titleSearch, setTitleSearch] = useState("");
-  const [rateSearch, setRateSearch] = useState(0);
-  const handleAdd = (newMovie) => { 
-      setMovies([...movies, newMovie]); 
-  };
-  return (
 
+  return (
     <div className="App">
       <header className="App-header">
-        <div style={{ display: "flex", justifyContent: "space-around", width: "100%", background: 'blue' }}>
-          <AddMovie handleAdd={handleAdd} />
-          <Filter
-            rate={rateSearch}
-            setRateSearch={setRateSearch}
-            setTitleSearch={setTitleSearch}
-          />
-        </div>
-        <MovieList
-          rateSearch={rateSearch}
-          titleSearch={titleSearch}
-          movies={movies}
-        />
+        <AppRouter />
       </header>
     </div>
   );

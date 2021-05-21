@@ -1,0 +1,14 @@
+.containerClass{
+    display: flex;
+    justify-content: space-around;
+}
+
+.movieDescClass, .movieTrailerClass{
+    margin: 2%;
+    padding: 2%;
+    text-align: justify;
+}
+
+#movieTrailer{
+    color:blueviolet;
+}
