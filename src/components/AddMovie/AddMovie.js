@@ -12,9 +12,9 @@ import {
   Input,
 } from "reactstrap";
 
-const AddMovie = (props) => {
-  const { className, addMovie } = props;
-  const [newMovie, setNewMovie] = useState({
+const AddMovie = ({ addMovie }) => {
+  // const { className, addMovie } = props;
+  const emptyMovie = {
     id: uuidv4(),
     title: "",
     description: "",
@@ -22,7 +22,9 @@ const AddMovie = (props) => {
     posterUrl: "",
     date: "",
     rate: 1,
-  });
+  }
+  
+  const [newMovie, setNewMovie] = useState(emptyMovie);
   const [show, setShow] = useState(false);
 
   const toggle = () => setShow(!show);
@@ -32,7 +34,7 @@ const AddMovie = (props) => {
       <Button onClick={toggle}>
         Add movie
       </Button>
-      <Modal isOpen={show} toggle={toggle} className={className}>
+      <Modal isOpen={show} toggle={toggle} >
         <ModalHeader toggle={toggle}>
           Please fill in the information below to add a new movie
         </ModalHeader>
@@ -85,6 +87,7 @@ const AddMovie = (props) => {
               <Input
                 type="number"
                 name="rate"
+                value = "1"
                 placeholder="Enter the associated rate to this movie"
                 required
                 max="5"
@@ -102,15 +105,7 @@ const AddMovie = (props) => {
             onClick={(e) => {
               addMovie(newMovie);
               toggle();
-              setNewMovie({
-                id: uuidv4(),
-                title: "",
-                description: "",
-                name: "",
-                posterUrl: "",
-                date: "",
-                rate: 1,
-              });
+              setNewMovie(emptyMovie);
             }}
           >
             Save

@@ -1,27 +1,23 @@
 import React from "react";
 import "../MovieRating/Rate.css";
-function Rate(props) {
-  const stars = (x) => {
+function Rate({rate, setRateSearch}) {
     let starArray = [];
     for (let i = 1; i <= 5; i++) {
-      if (i <= x) {
+      if (i <= (rate)) {
         starArray.push(
-          <span className="stars" key={i} onClick={() => props.setRateSearch(i)}>
+          <span className="stars" key={i} onClick={() => setRateSearch(i)}>
             ★
           </span>
         );
       } else {
         starArray.push(
-          <span className="stars" key={i} onClick={() => props.setRateSearch(i)}>
+          <span className="stars" key={i} onClick={() => setRateSearch(i)}>
             ☆
           </span>
         );
       }
-    }
-    return starArray;
   };
-
-  return <div>{stars(props.rate)}</div>;
+  return starArray;
 }
 
 export default Rate;

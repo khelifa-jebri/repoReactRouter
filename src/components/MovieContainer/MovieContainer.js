@@ -10,8 +10,9 @@ function MovieContainer() {
     const [rateSearch, setRateSearch] = useState(0);
 
     const handleAdd = (newMovie) => {
-        setMovies([...movies, newMovie]);
+            setMovies([...movies, newMovie]);
     };
+
     return (
         <div >
             <div style={{ display: "flex", justifyContent: "space-around", width: "100%", background: 'blue' }}>

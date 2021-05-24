@@ -1,13 +1,13 @@
 import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 
-const MovieList = (props) => {
+const MovieList = ({movies, titleSearch, rateSearch}) => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', marginTop: '1%', alignItems: 'space-between' }}>
-      {props.movies.filter(
+      {movies.filter(
         (el) =>
-          el.title.toLowerCase().includes(props.titleSearch.toLowerCase()) &&
-          el.rate >= props.rateSearch
+          el.title.toLowerCase().includes(titleSearch.toLowerCase()) &&
+          el.rate >= rateSearch
       )
         .map((el) => (
           <MovieCard key={el.id} movie={el} />

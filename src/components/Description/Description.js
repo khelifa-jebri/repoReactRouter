@@ -16,7 +16,6 @@ const Description = ({ match }) => {
         <p>{movie.description}</p>
         <Link to="/">
           <Button variant="primary">Go at home page</Button>
-
         </Link>
       </div>
 
@@ -24,7 +23,7 @@ const Description = ({ match }) => {
         <h3 id='movieTrailer'>{movie.title}'s Trailer </h3>
         <iframe width="560"
           height="315"
-          src={movie.trailer}
+          src={movie.urlTrailer}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
